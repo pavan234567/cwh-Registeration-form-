@@ -1,0 +1,160 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerSubmited()"  class="border rounded-3">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-2 bg-light">
+            <span class="fs-2">Registration form</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+          <label for="Firstname" class="form-label" >First Name</label>
+          <input type="text" class="form-control"  id="Firstname"  placeholder="Firstname" formControlName="Firstname" >
+          <div class="form-text text-danger" *ngIf="Firstname.errors?.['required'] && (Firstname.touched ||Firstname.dirty)">
+            First name is  Required
+          </div>
+          <div class="form-text text-danger" *ngIf="Firstname.errors?.['minlength'] && (Firstname.touched ||Firstname.dirty)">
+            Name is too short
+          </div>
+          <div class="form-text text-danger" *ngIf="Firstname.errors?.['pattern'] && (Firstname.touched ||Firstname.dirty)">
+            First letter should start with Alphabet
+          </div>
+        </div>
+      <div class="col mb-3">
+         <label for="Lastname" class="form-label">Last Name</label>
+         <input type="text" class="form-control" id="Lastname"  placeholder="Lastname" formControlName="Lastname">
+    </div>
+    </div>
+    <div class="row g-0">
+            <div class="col mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input name="email" type="email"  class="form-control"autocomplete="off" formControlName="email" >
+              <div class="form-text"></div>
+              <div class="form-text text-danger" *ngIf="email.errors?.['required'] && (email.dirty ||email.touched)">
+                Email is Required
+              </div>
+              <div class="form-text text-danger" *ngIf="email.errors?.['email'] && (email.dirty ||email.touched)">
+                Email is Invalid
+              </div>
+            </div>
+    </div>
+    <div class="row ">
+        <div class="col mb-3">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="text" id="mobile" class="form-control" name="mobile" formControlName="mobile" minlength="10"  >
+            <div class="form-text"></div>
+            <div class="form-text text-danger" *ngIf="mobile.errors?.['required'] && (mobile.dirty ||mobile.touched)">
+                mobile number is required
+              </div>
+              <div class="form-text text-danger" *ngIf="mobile.errors?.['pattern'] && (mobile.dirty ||mobile.touched)">
+                mobile number is invalid
+              </div>
+              <div class="form-text text-danger" *ngIf="mobile.errors?.['minlength'] && (mobile.dirty ||mobile.touched)">
+                mobile number is short
+              </div>
+              <div class="form-text text-danger" *ngIf="mobile.errors?.['maxlength'] && (mobile.dirty ||mobile.touched)">
+                mobile number is long
+              </div>
+              
+        </div>
+   
+        <div class="col ps-3 mb-3 " >
+            <div class="m-1"  >Gender </div>
+            <div class="form-text text-danger" *ngIf="gender.errors?.['required'] ">
+              <h5>*</h5> 
+             </div>
+            <div class="form-check form-check-inline">
+                   <input  type="radio" class="form-check-input" value="m" id="male"  formControlName="gender">
+                   <label  class="form-check-label" for="male" >Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                  <input   type="radio" class="form-check-input" value="f"  id="female"  formControlName="gender">
+                  <label class="form-check-label" for="female" >female</label>
+            </div>
+            
+        </div>
+    </div>
+    <!-- <div class="col mb-3 " >                      Select Your Hobbies
+        <select class="form-select" aria-label="Default select example" id="hobbies"  formControlName="hobbies"  >
+             <select name="hobbies" id="hobbies" required=""> </select> -->
+          <!-- <option selected >---Select Your Hobbies---</option> -->
+          <!-- <option value="1" >Cricket</option>
+          <option value="2" >Soccer</option>
+          <option value="3" >Badminton</option>
+          <option value="4" >Singing</option>
+          <option value="5" >Dancing</option>
+        </select>
+    </div> --> 
+    <div class="col mb-3 " >
+      <div class="m-1"  >Hobbies :</div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" formControlName="hobbies" >
+      <label class="form-check-label" for="inlineCheckbox1">Cricket</label>
+    </div>
+      <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" formControlName="hobbies">
+      <label class="form-check-label" for="inlineCheckbox2">Soccer</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option3" formControlName="hobbies">
+      <label class="form-check-label" for="inlineCheckbox2">Badminton</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option4" formControlName="hobbies">
+      <label class="form-check-label" for="inlineCheckbox2">Singing</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option5" formControlName="hobbies">
+      <label class="form-check-label" for="inlineCheckbox2">Dancing</label>
+    </div>
+  </div>
+    
+    <div class="input-group col mb-3">
+        <span class="input-group-text"  id="Aboutme" >About me</span>
+        <textarea class="form-control" aria-label="With textarea" placeholder="Type about Yourself" formControlName="Aboutme"  ></textarea>
+    </div>
+
+    <div class="row">
+        <div class="col mb-3 ">
+            <label for="pwd" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pwd" placeholder="**********" formControlName="pwd">
+            <div class="form-text"></div>
+            <div class="form-text text-danger" *ngIf="pwd.errors?.['required'] && (pwd.dirty ||pwd.touched)">
+                password is required
+              </div>
+            <div class="form-text text-danger" *ngIf="pwd.errors?.['minlength'] && (pwd.dirty ||pwd.touched)">
+               password is short
+            </div>
+            <div class="form-text text-danger" *ngIf="pwd.errors?.['maxlength'] && (pwd.dirty ||pwd.touched)">
+                password is long
+            </div>
+        </div>
+            <div class="col mb-3 ">
+                <label for="rpwd" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control"  id="rpwd"  placeholder="**********" formControlName="rpwd" required>
+                <div class="form-text"></div>
+                <div class="form-text text-danger" [ngStyle]="{'display':repeatPass}">
+                    Repeat password is invalid
+                </div>
+            </div>
+    </div>
+        <!-- <div class="row">
+          <div class="form-check form-check-inline"> 
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+          </div>
+            <div class="form-check form-check-inline">
+              <div class="col-6 offset-3">
+                <div class="d-grid">
+                <button type="clear" class="btn btn-primary">Clear</button>
+                </div>
+              </div>
+            </div> 
+        </div> -->
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-outline-success" [disabled]="registerForm.invalid" style="color: rgb(91, 9, 9);" > Submit</button>
+        <button type="button" class="btn btn-outline-danger" (click)="resetForm()">Clear</button>
+    </div>
+</form>
+
